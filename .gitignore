@@ -1,0 +1,43 @@
+## Build results
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug*/
+[Rr]elease*/
+
+## Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.cache
+*.log
+
+## Visual Studio Code
+.vscode/
+
+## Rider / JetBrains
+.idea/
+*.sln.iml
+
+## Resharper
+_ReSharper*/
+*.DotSettings.user
+
+## DotCover
+*.dotCover
+
+## NCrunch
+*.ncrunch*
+*.ncrunchsolution
+
+## Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Publish ou

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonExtractor", "JsonExtractor.csproj", "{C173AE74-B9CF-E6A6-78E7-315419F47A47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonExtractor.Test", "..\JsonExtractor.Test\JsonExtractor.Test.csproj", "{FA9D84DD-0FEE-A048-CA1D-09E88C86B217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C173AE74-B9CF-E6A6-78E7-315419F47A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C173AE74-B9CF-E6A6-78E7-315419F47A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C173AE74-B9CF-E6A6-78E7-315419F47A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C173AE74-B9CF-E6A6-78E7-315419F47A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9D84DD-0FEE-A048-CA1D-09E88C86B217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9D84DD-0FEE-A048-CA1D-09E88C86B217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9D84DD-0FEE-A048-CA1D-09E88C86B217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9D84DD-0FEE-A048-CA1D-09E88C86B217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8632EC20-EE7A-469D-9F4B-5353BB3ADB78}
+	EndGlobalSection
+EndGlobal
