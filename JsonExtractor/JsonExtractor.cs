@@ -67,15 +67,15 @@ public static class JsonExtractor
     public static JsonExtractResult ExtractPath(JsonElement root, string path)
     {
         if (string.IsNullOrWhiteSpace(path))
-        {
-            return new JsonExtractResult
-            {
-                Type = JsonExtractResultType.Null,
-                Value = null
-            };
-        }
+            return new JsonExtractResult { Type = JsonExtractResultType.Null };
 
         path = path.Trim();
+
+        // Normalize "$" root
+        if (path == "$")
+        {
+            return WrapSingle(root);
+        }
 
         if (path.StartsWith("$."))
             path = path[2..];
@@ -88,7 +88,15 @@ public static class JsonExtractor
         {
             var next = new List<JsonElement>();
 
-            // Case 1: wildcard array fan-out: [*]
+            // ⭐ ROOT ARRAY SUPPORT
+            if (current.Count == 1 &&
+                current[0].ValueKind == JsonValueKind.Array &&
+                part != "[*]")
+            {
+                // If root is array, only [*] is allowed
+                return new JsonExtractResult { Type = JsonExtractResultType.Null };
+            }
+
             if (part == "[*]")
             {
                 foreach (var el in current)
@@ -100,7 +108,6 @@ public static class JsonExtractor
                     }
                 }
             }
-            // Case 2: property with wildcard: prop[*]
             else if (part.EndsWith("[*]"))
             {
                 var prop = part[..^3];
@@ -116,7 +123,6 @@ public static class JsonExtractor
                     }
                 }
             }
-            // Case 3: normal property access
             else
             {
                 foreach (var el in current)
@@ -136,26 +142,15 @@ public static class JsonExtractor
         }
 
         if (current.Count == 0)
-        {
-            return new JsonExtractResult
-            {
-                Type = JsonExtractResultType.Null,
-                Value = null
-            };
-        }
+            return new JsonExtractResult { Type = JsonExtractResultType.Null };
 
         if (current.Count == 1)
-        {
             return WrapSingle(current[0]);
-        }
-
-        // Multiple results → List
-        var values = current.Select(ExtractScalarOrRaw).ToList();
 
         return new JsonExtractResult
         {
             Type = JsonExtractResultType.List,
-            Value = values
+            Value = current.Select(ExtractScalarOrRaw).ToList()
         };
     }
 
