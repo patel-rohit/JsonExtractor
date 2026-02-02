@@ -191,19 +191,19 @@ public static class JsonExtractor
             JsonValueKind.Object => new JsonExtractResult
             {
                 Type = JsonExtractResultType.Object,
-                Value = el.ToString()
+                Value = el
             },
 
             JsonValueKind.Array => new JsonExtractResult
             {
                 Type = JsonExtractResultType.Array,
-                Value = el.ToString()
+                Value = el
             },
 
             _ => new JsonExtractResult
             {
                 Type = JsonExtractResultType.Scalar,
-                Value = el.ToString()
+                Value = el
             }
         };
     }
@@ -217,7 +217,7 @@ public static class JsonExtractor
             JsonValueKind.True => true,
             JsonValueKind.False => false,
             JsonValueKind.Null => null,
-            _ => el.ToString()
+            _ => el
         };
     }
 }

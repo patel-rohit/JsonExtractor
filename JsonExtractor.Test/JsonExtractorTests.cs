@@ -161,7 +161,7 @@ public class JsonExtractorTests
 
         Assert.Equal(JsonExtractResultType.Object, result.Type);
 
-        var json = Assert.IsType<string>(result.Value);
+        var json = Assert.IsType<string>(result.Value.ToString());
         Assert.Contains("\"tags\"", json);
     }
 
@@ -172,7 +172,7 @@ public class JsonExtractorTests
 
         Assert.Equal(JsonExtractResultType.Array, result.Type);
 
-        var json = Assert.IsType<string>(result.Value);
+        var json = Assert.IsType<string>(result.Value.ToString());
         Assert.Contains("\"kioskId\"", json);
     }
 
@@ -182,7 +182,7 @@ public class JsonExtractorTests
         var result = JsonExtractor.ExtractPath(_root, "$.emptyObj");
 
         Assert.Equal(JsonExtractResultType.Object, result.Type);
-        Assert.Equal("{}", result.Value);
+        Assert.Equal("{}", result.Value.ToString());
     }
 
     [Fact]
@@ -191,7 +191,7 @@ public class JsonExtractorTests
         var result = JsonExtractor.ExtractPath(_root, "$.emptyArr");
 
         Assert.Equal(JsonExtractResultType.Array, result.Type);
-        Assert.Equal("[]", result.Value);
+        Assert.Equal("[]", result.Value.ToString());
     }
 
     // ---------------------------

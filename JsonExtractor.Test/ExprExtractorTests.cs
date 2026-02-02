@@ -29,6 +29,28 @@ public class ExprExtractorTests
         _root = doc.RootElement;
     }
 
+    [Fact]
+    public void Join_From_Json_String_Tiers()
+    {
+        // Arrange
+        var json = """
+        {
+          "tiers": "{ \"tiers\": [\"Gold\", \"Silver\"] }"
+        }
+        """;
+
+        using var doc = JsonDocument.Parse(json);
+        var root = doc.RootElement;
+
+        var expr = "join(',', json_get(parse_json($.tiers), 'tiers'))";
+
+        // Act
+        var result = ExprExtractor.ExtractExpr(root, expr);
+
+        // Assert
+        Assert.Equal("Gold,Silver", result);
+    }
+
     // ---------------------------
     // concat(...)
     // ---------------------------
